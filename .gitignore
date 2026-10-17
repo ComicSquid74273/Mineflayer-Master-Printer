@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+
+# local runtime state (may contain IPs, coordinates, and generated credentials)
+auth-cache/
+logs/
+local-folia-server/
+dashboard-service/data/
+dashboard-service/smtp-config.env
+*.log
+
+# local environment / secrets
+.env
+.env.*
+
+# uploaded schematics live in dashboard data; keep the folder placeholder only
+schematics/*
+!schematics/.gitkeep
+
+# build/deploy artifacts
+*.zip
+
+# local reference code and tooling knowledge bases (not part of this repo)
+reference/
+graphify-out/
+knowledge-base/
+
+# local AI-tool workspace files
+.claude/
+.codex-*.patch
+AGENTS.md

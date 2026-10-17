@@ -1,0 +1,35 @@
+{
+  "name": "mineflayer-master-printer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mineflayer schematic/litematic printer connection and dashboard foundation",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "start:testserver": "node src/index.js --connection=testserver",
+    "start:6b6t": "node src/index.js --connection=6b6t",
+    "test:elytra:live": "node scripts/elytra-live-test.js --connection=testserver --speed-bps=25 --phase-ms=3000",
+    "test:elytra:reconnect:live": "node scripts/elytra-reconnect-live-test.js --connection=testserver",
+    "test:storage:live": "node scripts/storage-live-test.js --connection=testserver --anchor=-326,97,-100",
+    "test:storage:stress:live": "node scripts/storage-stress-live-test.js --connection=testserver --anchor=-326,97,-100 --iterations=100",
+    "dashboard": "npm --prefix dashboard-service start",
+    "check": "node --check src/index.js && node --check src/config.js && node --check src/connection-manager.js && node --check src/elytra-flight.js && node --check src/runtime-lock.js && node --check src/storage-registration.js && node --check src/gear-restock.js && node --check src/inventory-manager.js && node --check src/schematic-loader.js && node --check src/job-manager.js && node --check src/printer.js && node --check src/flight-trajectory-planner.js && node --check src/printer-runtime.js && node --check src/dashboard-client.js && node --check src/chat-login.js && node --check src/shared/block-interaction.js && node --check src/shared/proxy-connect.js && node --check scripts/elytra-live-test.js && node --check scripts/elytra-reconnect-live-test.js && node --check scripts/storage-live-test.js && node --check scripts/storage-stress-live-test.js && node --check scripts/load-schematic-chunk-live.js && node --check scripts/print-queue-chunk-recovery-live.js && node --check scripts/print-multi-chunk-live.js && node --check scripts/test-multiple-landings-live.js && npm --prefix dashboard-service run check",
+    "test": "node --test test/*.test.js && npm --prefix dashboard-service test",
+    "graphify:query": "graphify query",
+    "test:schematic:live": "node scripts/load-schematic-chunk-live.js",
+    "test:print-queue-recovery:live": "node scripts/print-queue-chunk-recovery-live.js --connection=testserver",
+    "test:inventory:live": "node scripts/inventory-restock-live-test.js --connection=testserver",
+    "test:multi-chunk:live": "node scripts/print-multi-chunk-live.js --connection=testserver --max-chunks=2",
+    "test:landing:live": "node scripts/test-multiple-landings-live.js --connection=testserver"
+  },
+  "dependencies": {
+    "mineflayer": "^4.39.0",
+    "mineflayer-elytrafly": "^1.4.8",
+    "mineflayer-pathfinder": "^2.4.5",
+    "socks": "^2.8.10"
+  }
+}
